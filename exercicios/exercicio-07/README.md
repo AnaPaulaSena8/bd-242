@@ -1,1 +1,1 @@
-
+# Pasta do sétimo exercício.
