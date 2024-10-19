@@ -1,1 +1,1 @@
-
+# Pasta do sexto exercício.
