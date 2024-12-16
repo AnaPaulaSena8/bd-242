@@ -1,0 +1,81 @@
+
+C:\Users\diamo\prova>sqlite3 SCA_242.db
+SQLite version 3.47.2 2024-12-07 20:39:59
+Enter ".help" for usage hints.
+sqlite> CREATE TABLE TB_CURSO(
+(x1...> id INTEGER PRIMARY KEY AUTOINCREMENT,
+(x1...> descricao VARCHAR(100) NOT NULL);
+sqlite> CREATE TABLE TB_ALUNO(
+(x1...> id INTEGER PRIMARY KEY AUTOINCREMENT,
+(x1...> nome VARCHAR(100) NOT NULL,
+(x1...> FOREIGN KEY (id) REFERENCE TB_CURSO(id));
+Parse error: near "REFERENCE": syntax error
+  ENT, nome VARCHAR(100) NOT NULL, FOREIGN KEY (id) REFERENCE TB_CURSO(id));
+                                      error here ---^
+sqlite> CREATE TABLE TB_ALUNO(
+(x1...> id_aluno INTEGER PRIMARY KEY AUTOINCREMENT,
+(x1...> nome VARCHAR(100) NOT NULL,
+(x1...> FOREIGN KEY (id_aluno) REFERENCES TB_CURSO(id));
+sqlite> CREATE TABLE TB_CURSO_PROFESSOR(
+(x1...> ;
+Parse error: near ";": syntax error
+  CREATE TABLE TB_CURSO_PROFESSOR( ;
+                     error here ---^
+sqlite> CREATE TABLE TB_PROFESSOR(
+(x1...> id_prof INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+(x1...> nome VARCHAR(100) NOT NULL);
+sqlite> CREATE TABLE TB_DISCIPLINA(
+(x1...> id_disc INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+(x1...> descricao VARCHAR(100) NOT NULL);
+sqlite> CREATE TABLE TB_CURSO_PROFESSOR(
+(x1...> id_curso_professor INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+(x1...> nome VARCHAR(100) NOT NULL,
+(x1...> FOREIGN KEY (id_curso_professor) REFERENCES TB_CURSO(id),
+(x1...> FOREIGN KEY (id_curso_professor) REFERENCES TB_PROFESSOR(id_professor));
+sqlite> CREATE TABLE TB_CURSO_DISCIPLINA(
+(x1...> id_curso_disciplina INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+(x1...> FOREIGN KEY (id_curso_disciplina) REFERENCES TB_CURSO(id),
+(x1...> FOREIGN KEY (id_curso_disciplina) REFERENCES TB_DISCIPLINA(id_disc));
+sqlite> UPDATE TB_CURSO_PROFESSOR
+   ...> ;
+Parse error: near ";": syntax error
+  UPDATE TB_CURSO_PROFESSOR  ;
+               error here ---^
+sqlite> DELETE FROM TB_ALUNOS
+   ...> ;
+Parse error: no such table: TB_ALUNOS
+sqlite> SELECT * FROM TB_CURSO_PROFESSOR
+   ...> ;
+sqlite> .tables
+TB_ALUNO             TB_CURSO_DISCIPLINA  TB_DISCIPLINA
+TB_CURSO             TB_CURSO_PROFESSOR   TB_PROFESSOR
+sqlite> DROP TB_CURSO_PROFESSOR
+   ...> ;
+Parse error: near "TB_CURSO_PROFESSOR": syntax error
+  DROP TB_CURSO_PROFESSOR ;
+       ^--- error here
+sqlite> DROP TABLE TB_CURSO_PROFESSOR
+   ...> ;
+sqlite> .tables
+TB_ALUNO             TB_CURSO_DISCIPLINA  TB_PROFESSOR
+TB_CURSO             TB_DISCIPLINA
+sqlite> CREATE TABLE TB_CURSO_PROFESSOR(
+(x1...> id_curso INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+(x1...> data_ingresso DATE,
+(x1...> nome TEXT);
+sqlite> DROP TABLE TB_CURSO_PROFESSOR
+   ...> ;
+sqlite> CREATE TABLE TB_CURSO_PROFESSOR(
+(x1...> id_curso_disc INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+(x1...> data_ingresso DATE,
+(x1...> FOREIGN KEY (id_curso_disc) REFERENCES TB_CURSO(id),
+(x1...> ) REFERENCES TB_PROFESSOR(id_professor));
+Parse error: near ")": syntax error
+  EIGN KEY (id_curso_disc) REFERENCES TB_CURSO(id), ) REFERENCES TB_PROFESSOR(id
+                                      error here ---^
+sqlite> CREATE TABLE TB_CURSO_PROFESSOR(
+(x1...> id_curso_prof INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+(x1...> data_ingresso DATE,
+(x1...> FOREIGN KEY (id_curso_prof) REFERENCES TB_CURSO(id),
+(x1...> FOREIGN KEY (id_curso_prof) REFERENCES TB_PROFESSOR(id_prof));
+sqlite>
